@@ -121,7 +121,6 @@ export default function Customers(){
               <DeleteIcon />
             </IconButton>
         },
-
         {
           headerName: '',
           width: 200,
