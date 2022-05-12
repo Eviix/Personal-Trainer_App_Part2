@@ -108,13 +108,6 @@ export default function Customers(){
 
         {
           headerName: '',
-          width: 200,
-          field: 'links.0.href',
-          cellRenderer: params => <Addtraining addTraining={addTraining} params={params} />
-        },
-
-        {
-          headerName: '',
           width: 100,
           field: 'links.0.href',
           cellRenderer: params => <EditCustomer updateCustomer={updateCustomer} params={params} />
@@ -127,7 +120,14 @@ export default function Customers(){
             <IconButton color="error" onClick={() => deleteCustomer(params.value)}>
               <DeleteIcon />
             </IconButton>
-        }
+        },
+
+        {
+          headerName: '',
+          width: 200,
+          field: 'links.0.href',
+          cellRenderer: params => <Addtraining addTraining={addTraining} params={params} />
+        },
       ]
 
     return(
