@@ -40,15 +40,26 @@ export default function Trainings(){
       }
     }
 
+    const customerLink = (params) => {
+      console.log(params);
+      return params.data.customer.firstname + " " + params.data.customer.lastname;
+  };
+
     const columns = [
         { field: 'Date', field: 'date', cellRenderer: (data) => { return moment(data.value).format("HH:mm, DD-MMM-YY")}, sortable: true, filter: true },
         { field: 'duration', sortable: true, filter: true },
         { field: 'activity', sortable: true, filter: true },
 
         {
+          headerName: 'Customer',
+          valueGetter: customerLink,
+          width: 200 ,
+      },
+
+        {
           headerName: '',
           field: 'id',
-          width: 90,
+          width: 100,
           cellRendererFramework: params =>
           
           <IconButton color="error" onClick={() => deleteTraining(params.value)}><DeleteIcon />

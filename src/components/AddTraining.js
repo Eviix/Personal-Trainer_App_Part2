@@ -5,27 +5,27 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import moment from 'moment';
 
-export default function Addtraining(props) {
+
+export default function Addtraining({ addTraining, params }) {
     const [open, setOpen] = React.useState(false);
-    const [training, setTraining] = React.useState({date: "", activity: "", duration: "", customer: ""});
+    const [training, setTraining] = React.useState({date: "", activity: "", duration: "", customer: params.value })
+
+    const [customer, setCustomer] = React.useState({customerInfo: ''})
+    
     const handleClickOpen = () => {
-        setOpen(true);
-      };
+      setOpen(true);
+      setCustomer({customerInfo: params.data.firstname + " " + params.data.lastname
+      })
+    };
     
       const handleClose = () => {
         setOpen(false);
       };
-    
+
       const handleSave = () => {
-        Addtraining(training);
-        setTraining({
-            date: '',
-            activity: '',
-            duration: '',
-            customer: '' 
-        })
+        addTraining(training, params.value);
+        setTraining({ date: '',activity: '',duration: '',customer: '' })
         setOpen(false);
       }
     
@@ -39,14 +39,14 @@ export default function Addtraining(props) {
             Add new training
           </Button>
           <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>New training</DialogTitle>
+            <DialogTitle>New training({customer.customerInfo})</DialogTitle>
             <DialogContent>
               <TextField
                 name="date"
                 value={training.date}
                 onChange={inputChanged}
                 margin="dense"
-                label={`Date (eg. ${moment().format("HH:mm, DD-MMM-YY")})`}
+                label="For example (YYYY-MM-DD)"  
                 fullWidth
                 variant="standard"
               />
