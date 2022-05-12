@@ -9,17 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 export default function Addcustomer ({ addCustomer }) {
   
   const [open, setOpen] = React.useState(false);
-  const [customer, setCustomer] = React.useState({
-  
-  
-    firstname: '',
-    lastname: '',
-    streetaddress: '',
-    postcode: '',
-    city: '',
-    email: '',
-    phone: ''
-  })
+  const [customer, setCustomer] = React.useState({firstname: '',lastname: '',streetaddress: '',postcode: '',city: '',email: '',phone: ''})
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -31,15 +21,7 @@ export default function Addcustomer ({ addCustomer }) {
 
   const handleSave = () => {
     addCustomer(customer);
-    setCustomer({
-        firstname: '',
-        lastname: '',
-        streetaddress: '',
-        postcode: '',
-        city: '',
-        email: '',
-        phone: ''    
-    })
+    setCustomer({firstname: '',lastname: '',streetaddress: '',postcode: '',city: '',email: '',phone: ''})
     setOpen(false);
   }
 
